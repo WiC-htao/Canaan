@@ -1,0 +1,32 @@
+% author = htao
+\usepackage{amsthm}                 % provid commands \theoremstyle 
+% provid environments {proof}
+
+
+\usepackage{hyperref}
+\usepackage[capitalize, nameinlink]{cleveref}
+
+\usepackage{enumitem}
+\setlist[enumerate, 1]{leftmargin=2em, label=\itshape{\roman*}., align=left} % default enumerate style
+\setlist[enumerate, 2]{leftmargin=4em, label=\textup{(\alph*)}, align=left} % default enumerate style
+
+\newcommand{\mtext}[1]{\quad\text{#1}\quad}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{}[section]
+\theoremstyle{remark}
+% \newtheorem*{solution}{\bfseries{Solution}}
+
+\AddToHook{env/lemma/begin}{\crefalias{theorem}{lemma}} % \usepackage{thmtools} % monkey-patch to fix cleveref for debian
+\newenvironment{solution}{
+    \renewcommand{\proofname}{\bfseries{Solution}}  %
+    \renewcommand{\qedsymbol}{\ensuremath{\square}} % 确保有qed符号
+    \proof
+}
+{\endproof}
+
+% 只移除proof环境的qedsymbol
+\renewcommand{\qedsymbol}{}

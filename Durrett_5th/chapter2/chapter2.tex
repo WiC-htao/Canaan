@@ -1,0 +1,131 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{../../math_symbol}
+\usepackage{../../header}
+
+\newcommand{\thechapter}{2}
+\title{Durret 5th Chapter{\thechapter} Solutions}
+\author{htao}
+
+
+\makeatletter
+\def\thm@space@setup{\thm@preskip=0.3 \baselineskip}
+\makeatother
+
+
+\usepackage{physics}
+
+
+\renewcommand{\theexercise}{\thechapter.\arabic{section}.\arabic{exercise}}
+
+\renewcommand{\thetheorem}{\thechapter.\arabic{section}.\arabic{theorem}}
+
+
+\begin{document}
+\maketitle
+
+\stepcounter{section}
+\begin{exercise}
+    Suppose $(X_1, \dots ,X_n)$ has density $f(x_1, x_2,\dots , x_n)$, that is
+    \[
+        P((X_1,X_2, \dots ,X_n) \in A) =\int_A f(x) \dif x \mtext{for} A\in \mathcal{R}^n
+    \]
+    If $f(x)$ can be written as $g_1(x_1)\cdots g_n(x_n)$ where the $g_m\ge 0$ are measurable,
+    then $X1,X2, \dots ,Xn$ are independent. Note that the $g_m$ are not assumedto be probability densities.
+\end{exercise}
+\begin{solution}
+    Let $A=B_1\times\dots\times B_n$ where $B_i\in \mathcal{B}$. Then by Fubini-Tonelli Theorem
+    \begin{align*}
+        P(X_1\in B_1, \dots, X_n\in B_n) & = P((X_1, \dots, X_n)\in A)                                                 \\
+                                         & = \int_A f(x)\dif x = \int_{B_1\times\dots\times B_n} g_1\cdots g_n  \dif x \\
+                                         & = \prod_{1\le i\le n} \int_{B_i}g_i\dif x
+    \end{align*}
+    Then let $A_i=\RR\times\dots \times\RR\times B_i \times\RR\times\dots\times\RR$, then since $\prod_{1\le j\le n} \int_{\RR}g_j\dif x = \int_{\RR^n} f\dif x = 1$,
+    \[
+        P(X_i\in B_i) = P((X_1, \dots, X_n)\in A_i) = \frac{\int_{B_i} g_i\dif x}{\int_{\RR} g_i\dif x}{\prod_{1\le j\le n} \int_{\RR}g_j\dif x}=\frac{\int_{B_i} g_i\dif x}{\int_{\RR} g_i\dif x}
+    \]
+    The desired result follows from
+    \[
+        \prod_{1\le j\le n} P(X_i\in B_i) = \frac{\prod_{1\le j\le n} \int_{B_i}g_j\dif x}{\prod_{1\le j\le n} \int_{\RR}g_j\dif x} = \prod_{1\le j\le n} \int_{B_i}g_j\dif x =  P(X_1\in B_1, \dots, X_n\in B_n)
+    \]
+\end{solution}
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+
+\subsection*{exercise}
+\begin{exercise}
+    Consider $\gamma(a)$ defined in (2.7.1). The following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\gamma(a)=-\infty$
+        \item $P(X\ge a) =0$
+        \item $P(S_n\ge na)=0$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    According the context,
+    \[
+        \gamma(a) := \lim_{n\to\infty} \frac{1}{n} \log P(S_n\ge na)
+    \]
+    where $Sn=X_1+\dots +X_n$ and $X_i$'s are i.i.d and $a> EX_i$. Its well-definition
+    has been proven in DTE5th and is repeated in \cref{thm2.7.2}
+
+    \begin{itemize}
+        \item (a)$\Rightarrow$(b). Assuming $P(X_1\ge a)=r>0$, then we have the contradiction that
+              \[
+                  \gamma(a) = \lim_{n\to\infty} \frac{1}{n}\ln P(S_n\ge na) \ge \lim_{n\to\infty} \frac{1}{n}\ln \left(P(X_i\ge a)\right)^n=\ln r>-\infty
+              \]
+        \item (b)$\Rightarrow$(c) is trivial
+        \item (c)$\Rightarrow$(a) is weird but trivial.
+    \end{itemize}
+\end{solution}
+
+
+\appendix
+\section{Related Theorem Details}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+
+\subsection*{2.7}
+\stepcounter{section}
+\begin{lemma}[Lemma 2.7.1 in DTE5th]
+    \label{lemma2.7.1}
+    If $\gamma_{n+m}\ge\gamma_n+\gamma_m$ holds for any $m$ and n, then $\gamma(n)/n\to \sup_k \gamma(k)/k$ as $n\to\infty$.
+\end{lemma}
+\begin{proof}
+    We have $\limsup \frac{\gamma_n}{n} \le \sup_k \frac{\gamma_k}{k}$ and let $n=km+l$, then
+    \[
+        \frac{\gamma_n}{n} \ge \frac{km}{n} \frac{\gamma_m}{m} + \frac{\gamma_l}{n}
+    \]
+    which conclude $\liminf \gamma_n/n \ge \gamma_m/m$ for any $m$ and hence the desired result.
+\end{proof}
+
+\begin{theorem}
+    \label{thm2.7.2}
+    Let  $X_i$'s are i.i.d and $Sn=X_1+\dots +X_n$. For any $a>EX$,
+    \[
+        \lim_{n\to\infty} \frac{1}{n} \log P(S_n\ge na)
+    \]
+    exists on $\RR\cup\Set{-\infty}$.
+\end{theorem}
+\begin{proof}
+    We observe that
+    \[
+        \ln P(S_{n+m}\ge(n+m)a) > \ln P(Sn\ge na) + \ln P(S_m\ge ma)
+    \]
+
+    and hence by \cref{lemma2.7.1} as $n\to\infty$,
+    \[
+        \frac{\ln P(Sn\ge na) }{n} \to \sup_m \frac{ \ln P(S_m\ge ma)}{m} < 0
+    \]
+
+\end{proof}
+\end{document}

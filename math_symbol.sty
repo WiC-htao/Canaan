@@ -1,0 +1,50 @@
+% author = htao
+\ProvidesPackage{math_symbol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \def is a TeX primitive, \newcommand is a LaTeX overlay on top of \def. 
+%% The most obvious benefits of     \newcommand over \def are:
+%% * \newcommand checks whether or not the command already exists
+%% * \newcommand allows you to define an optional argument
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsfonts}
+
+% constants
+\newcommand{\ZZ}{{\mathbb Z}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\CC}{{\mathbb C}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\KK}{{\mathbb K}}
+
+\newcommand{\wrt}{\textbf{w.r.t\ }}
+% \newcommand{\iff}{\textbf{i.f.f}}
+
+% mapping
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\Sum}{\sum\limits}
+\newcommand{\Lim}{\lim\limits}
+\newcommand{\var}{\text{var}}
+\renewcommand{\Im}{{\mathrm{Im}}}
+\newcommand{\LH}{\(\mathit{LH}\ \)}
+\newcommand{\RH}{\(\mathit{RH}\)}
+\newcommand{\Law}{\mathop{\mathrm{Law}}}
+\newcommand{\interior}{\mathring}
+\newcommand{\abs}[1]{\lvert {#1} \rvert}
+\newcommand{\dabs}[1]{\left\lvert {#1} \right\rvert}
+% relationol operator
+\newcommand{\biconditional}{\leftrightarrow}
+\newcommand{\diff}{\backslash}
+\newcommand{\hyph}{\text{-}}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\eqd}{\overset{d}{=}}
+
+\newcommand{\drv}[2][1]{{#2}^{(#1)}}
+
+\newcommand{\midcup}{\mathop{\textstyle\bigcup}}
+\newcommand{\midcap}{\mathop{\textstyle\bigcap}}
+% wrapping
+\newcommand{\Set}[1]{{\left\{#1\right\}}}
+
+\newcommand{\Borel}[1]{\mathcal{B}(#1)}
