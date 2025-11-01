@@ -25,7 +25,7 @@
 \begin{document}
 \maketitle
 
-\stepcounter{section}
+\section{Independence}
 \begin{exercise}
     Suppose $(X_1, \dots ,X_n)$ has density $f(x_1, x_2,\dots , x_n)$, that is
     \[
@@ -46,10 +46,31 @@
         P(X_i\in B_i) = P((X_1, \dots, X_n)\in A_i) = \frac{\int_{B_i} g_i\dif x}{\int_{\RR} g_i\dif x}{\prod_{1\le j\le n} \int_{\RR}g_j\dif x}=\frac{\int_{B_i} g_i\dif x}{\int_{\RR} g_i\dif x}
     \]
     The desired result follows from
-    \[
-        \prod_{1\le j\le n} P(X_i\in B_i) = \frac{\prod_{1\le j\le n} \int_{B_i}g_j\dif x}{\prod_{1\le j\le n} \int_{\RR}g_j\dif x} = \prod_{1\le j\le n} \int_{B_i}g_j\dif x =  P(X_1\in B_1, \dots, X_n\in B_n)
-    \]
+    \begin{align*}
+        \prod_{1\le j\le n} P(X_i\in B_i) & = \frac{\prod_{1\le j\le n} \int_{B_i}g_j\dif x}{\prod_{1\le j\le n} \int_{\RR}g_j\dif x} \\
+                                          & =\prod_{1\le j\le n} \int_{B_i}g_j\dif x =  P(X_1\in B_1, \dots, X_n\in B_n)
+    \end{align*}
 \end{solution}
+
+\begin{exercise}
+    Suppose $X_1,\dots ,X_n$ are random variables that take values in countable sets $S_1, \dots, S_n$. Then in order for $X_1, . . . ,X_n$ to be independent,
+    it is sufficient that whenever $x_i \in S_i$,
+    \[
+        P(X_1=x_1, \dots, X_n=x_n)=\prod_{i=1}^n P(X_i=x_i)
+    \]
+\end{exercise}
+\begin{solution}
+    For any measurable set $B_i\subset S_i$, $B_i$ is countable and $B_1\times\dots\times B_n$ is countable.
+    Then
+    \begin{align*}
+        P(X_1\in B_1, \dots, X_n\in B_n) & = \sum_{(x_1, \dots, x_n)\in B_1\times\dots\times B_n}  P(X_1=x_1, \dots, X_n=x_n) \\
+                                         & =\sum_{(x_1, \dots, x_n)\in B_1\times\dots\times B_n}  \prod_{i=1}^n P(X_i=x_i) \\
+                                         & = \prod_{i=1}^n (\sum_{x_i\in B_i} P(X_i=x_i)) = \prod_{i=1}^n P(X_i\in B_i)
+    \end{align*}
+    is followed by the desired result.
+\end{solution}
+
+
 \section{}
 \section{}
 \section{}
