@@ -1,40 +1,32 @@
 \documentclass[a4paper]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{../../math_symbol}
+
 \usepackage{../../header}
 
 \newcommand{\thechapter}{3}
-\title{Durrett 5th Chapter{\thechapter} Solutions}
-\author{htao}
-
-
-\makeatletter
-\def\thm@space@setup{\thm@preskip=0.3 \baselineskip}
-\makeatother
-
-
-\usepackage{physics}
-
 
 \renewcommand{\theexercise}{\thechapter.\arabic{section}.\arabic{exercise}}
 
 \renewcommand{\thetheorem}{\thechapter.\arabic{section}.\arabic{theorem}}
 
+\title{Durrett 5th Chapter{\thechapter} Solutions}
+\author{htao}
+
+
 
 \begin{document}
 \maketitle
 
-\section{}
+\section{The De Moivre-Laplace Theorem}
 
 \begin{exercise}
-
+    Generalize the proof of Lemma 3.1.1 to conclude that if $\max_{1\le j\le n} \abs{c_{j,n}} \to 0$,
+    $\sum_{j=1}^n c_{j,n}\to \lambda$ and $\sup_n \sum_{j=1}^{n} \abs{c_{j,n}}<\infty$ then $\prod_{j=1}^n (1+c_{j,n})\to e^\lambda$.
 \end{exercise}
 \begin{solution}
     By the Taylor's expansion, the logritham of the sum is
     \begin{align*}
-        \sum_{j=1}^{n} \ln(1+c_{j,n})& = \sum_{j=1}^{n} (c_{j,n} - \frac{1}{(1+c_{j,n})^2}c_{j,n}^2)\\
-                                    &=\sum_{j=1}^{n} c_{j,n} - \sum_{j=1}^{n} \frac{1}{(1+c_{j,n})^2}c_{j,n}^2
+        \sum_{j=1}^{n} \ln(1+c_{j,n}) & = \sum_{j=1}^{n} (c_{j,n} - \frac{1}{(1+c_{j,n})^2}c_{j,n}^2)             \\
+                                      & =\sum_{j=1}^{n} c_{j,n} - \sum_{j=1}^{n} \frac{1}{(1+c_{j,n})^2}c_{j,n}^2
     \end{align*}
     where $\sum_{j=1}^{n} c_{j,n} \to \lambda$.And letting $c_n := \max_{1\le j\le n} \abs{c_{j,n}}<$, for large $n$ such that $c_n<1$
     \[
@@ -54,12 +46,5 @@
 \appendix
 \section{Related Theorem Details}
 
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
-
-\subsection*{2.7}
 
 \end{document}

@@ -1,32 +1,55 @@
 % author = htao
-\usepackage{amsthm}                 % provid commands \theoremstyle 
-% provid environments {proof}
+\usepackage[twoside]{geometry}  % With the 'showframe' option, you can check the interaction between layout and content
+\geometry{
+  top=1in,
+  bottom=1in,
+  right=1.1in,
+  left=1.1in
+}
 
+\usepackage{multido}
 
-\usepackage{hyperref}
-\usepackage[capitalize, nameinlink]{cleveref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{physics}
 
 \usepackage{enumitem}
 \setlist[enumerate, 1]{leftmargin=2em, label=\itshape{\roman*}., align=left} % default enumerate style
 \setlist[enumerate, 2]{leftmargin=4em, label=\textup{(\alph*)}, align=left} % default enumerate style
 
+\usepackage{\CurrentFilePath /math_symbol}
+
+
+\usepackage{hyperref}
+\usepackage[capitalize, nameinlink]{cleveref}
+
+% \RequirePackage{math_symbol}
 \newcommand{\mtext}[1]{\quad\text{#1}\quad}
 
 \newtheorem{theorem}{Theorem}[section]
+
 \newtheorem{lemma}[theorem]{Lemma}
+\AddToHook{env/lemma/begin}{\crefalias{theorem}{lemma}}  % monkey-patch to fix cleveref for debian
+
 
 \theoremstyle{definition}
 \newtheorem{exercise}{}[section]
-\theoremstyle{remark}
-% \newtheorem*{solution}{\bfseries{Solution}}
 
-\AddToHook{env/lemma/begin}{\crefalias{theorem}{lemma}} % \usepackage{thmtools} % monkey-patch to fix cleveref for debian
 \newenvironment{solution}{
+    \vspace{0.8 \baselineskip}
     \renewcommand{\proofname}{\bfseries{Solution}}  %
     \renewcommand{\qedsymbol}{\ensuremath{\square}} % 确保有qed符号
     \proof
 }
 {\endproof}
+
+
+% \makeatletter
+% \def\thm@space@setup{\thm@preskip=1 \baselineskip}
+% \makeatother
+
 
 % 只移除proof环境的qedsymbol
 \renewcommand{\qedsymbol}{}

@@ -1,26 +1,15 @@
 \documentclass[a4paper]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{../../math_symbol}
+
 \usepackage{../../header}
 
 \newcommand{\thechapter}{2}
-\title{Durrett 5th Chapter{\thechapter} Solutions}
-\author{htao}
-
-
-\makeatletter
-\def\thm@space@setup{\thm@preskip=0.3 \baselineskip}
-\makeatother
-
-
-\usepackage{physics}
-
 
 \renewcommand{\theexercise}{\thechapter.\arabic{section}.\arabic{exercise}}
 
 \renewcommand{\thetheorem}{\thechapter.\arabic{section}.\arabic{theorem}}
 
+\title{Durrett 5th Chapter{\thechapter} Solutions}
+\author{htao}
 
 \begin{document}
 \maketitle
@@ -76,17 +65,21 @@
 \begin{exercise}
     Prove that $P(\limsup A_n) \ge \limsup P(A_n)$ and $P(\liminf An) \le \liminf P(A_n)$.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     \[
         P(\limsup A_n) = P(\bigcap_{n=1}^\infty \bigcup_{m=n}^\infty A_m) = \lim_{n\to\infty} P(\bigcup_{m=n}^\infty A_m)\ge \lim_{n\to\infty} \sup_{m\ge n} P(A_m) = \limsup P(A_n)
     \]
     It can be proved by the similar method for $\liminf$ or directly use Fatou's Lemma to $1_{A_n}$
 
-\end{proof}
-\section{}
-\section{}
-\section{}
-\section{}
+\end{solution}
+
+\begin{exercise}
+    Prove the first result in Theorem 2.3.4 directly from the definition.
+\end{exercise}
+
+
+\multido{}{4}{\section{}}
+
 
 \subsection*{exercise}
 \begin{exercise}
@@ -103,7 +96,7 @@
         \gamma(a) := \lim_{n\to\infty} \frac{1}{n} \log P(S_n\ge na)
     \]
     where $Sn=X_1+\dots +X_n$ and $X_i$'s are i.i.d and $a> EX_i$. Its well-definition
-    has been proven in DTE5th and is repeated in \cref{thm2.7.2}
+    has been proven in PTE5th and is repeated in \cref{thm2.7.2}
 
     \begin{itemize}
         \item (a)$\Rightarrow$(b). Assuming $P(X_1\ge a)=r>0$, then we have the contradiction that
@@ -119,15 +112,11 @@
 \appendix
 \section{Related Theorem Details}
 
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
-\stepcounter{section}
+
+\multido{}{6}{\stepcounter{section}}
 
 \subsection*{2.7}
-\stepcounter{section}
-\begin{lemma}[Lemma 2.7.1 in DTE5th]
+\begin{lemma}[Lemma 2.7.1 in PTE5th]
     \label{lemma2.7.1}
     If $\gamma_{n+m}\ge\gamma_n+\gamma_m$ holds for any $m$ and n, then $\gamma(n)/n\to \sup_k \gamma(k)/k$ as $n\to\infty$.
 \end{lemma}
