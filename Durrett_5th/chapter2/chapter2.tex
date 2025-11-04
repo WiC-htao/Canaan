@@ -64,7 +64,7 @@
     Then
     \begin{align*}
         P(X_1\in B_1, \dots, X_n\in B_n) & = \sum_{(x_1, \dots, x_n)\in B_1\times\dots\times B_n}  P(X_1=x_1, \dots, X_n=x_n) \\
-                                         & =\sum_{(x_1, \dots, x_n)\in B_1\times\dots\times B_n}  \prod_{i=1}^n P(X_i=x_i) \\
+                                         & =\sum_{(x_1, \dots, x_n)\in B_1\times\dots\times B_n}  \prod_{i=1}^n P(X_i=x_i)    \\
                                          & = \prod_{i=1}^n (\sum_{x_i\in B_i} P(X_i=x_i)) = \prod_{i=1}^n P(X_i\in B_i)
     \end{align*}
     is followed by the desired result.
@@ -72,7 +72,17 @@
 
 
 \section{}
-\section{}
+\section{Borel-Cantelli Lemmas}
+\begin{exercise}
+    Prove that $P(\limsup A_n) \ge \limsup P(A_n)$ and $P(\liminf An) \le \liminf P(A_n)$.
+\end{exercise}
+\begin{proof}
+    \[
+        P(\limsup A_n) = P(\bigcap_{n=1}^\infty \bigcup_{m=n}^\infty A_m) = \lim_{n\to\infty} P(\bigcup_{m=n}^\infty A_m)\ge \lim_{n\to\infty} \sup_{m\ge n} P(A_m) = \limsup P(A_n)
+    \]
+    It can be proved by the similar method for $\liminf$ or directly use Fatou's Lemma to $1_{A_n}$
+
+\end{proof}
 \section{}
 \section{}
 \section{}
