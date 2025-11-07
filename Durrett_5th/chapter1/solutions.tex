@@ -1,0 +1,133 @@
+\documentclass[a4paper]{article}
+
+\usepackage{../../header}
+
+\newcommand{\thechapter}{1}
+
+\renewcommand{\theexercise}{\thechapter.\arabic{section}.\arabic{exercise}}
+
+\renewcommand{\thetheorem}{\thechapter.\arabic{section}.\arabic{theorem}}
+
+\title{Durrett 5th Chapter{\thechapter} Solutions}
+\author{htao}
+
+\begin{document}
+\maketitle
+
+\section{Probability Spaces}
+\begin{exercise}
+    Let $\Omega=\RR$, $\mathcal{F}=$all subsets so that $A$ or $A^c$ is countable, $P(A)=0$ in the first case and $= 1$ in the second.
+    Show that $(\Omega,\mathcal{F}, P)$ is a probability space.
+\end{exercise}
+\begin{solution}
+    We firstly prove $\mathcal{F}$ is a $\sigma$-field. Let $\Set{A_i} \subset \mathcal{F}$. It is obvious $A_i^c\in \mathcal{F}$.
+    If $A_i$ or $A_j$ is countable, then $A_i\cap A_j$ is countable and hence contained in $\mathcal{F}$. Otherwise $A_i^c$ and $A_j^c$ is countable,
+    and then $(A_i\cap A_j)^c=A_i^c\cup A_j^c$ is countable, which concludes $A_i\cap A_j$ is always in $\mathcal{F}$. Finally, $\bigcup_{i\in\NN} A_i$ is countable if every $A_i$ is countable, Otherwise $(\bigcup_{i\in\NN} A_i)^c = \bigcap_{i\in\NN} A_i^c\subset A_0^c$ is countable since $A_0^c$ is countable, which concludes $\bigcup_{i\in\NN} A_i \in \mathcal{F}$. Hence $\mathcal{F}$ is a $\sigma$-field.
+
+    $P$ is well-defined since $A\cup A^c=\Omega=\RR$ is uncountable, whence $A$ and $A^c$ can not be countable simutaneously. Finally we prove $P$ is a probability. It is trivial $P(\Omega)=1$. For disjoint sets, $A_i \in \mathcal{F}$, if $A_i$ are all countable, $P(A_i)=0$
+    and then $+_{i=1}^\infty A_i$ is countable, $P(+_{i=1}^\infty A_i)=0=\sum_{i=1}^{\infty} P(A_i)$. Otherwise $A_k^c$ is countable, and then $A_i\subset A_k^c, i\neq k$ is countable since they are disjoint. And  $(+_{i\in\NN} A_i)^c = \bigcap_{i\in\NN} A_i^c\subset A_k^c$ is countable. So $P(+_{i=1}^\infty A_i)=\sum_{i=1}^{\infty} P(A_i)=1=P(+_{i\in\NN} A_i)$, when $P$ is a probability.
+\end{solution}
+
+
+\begin{exercise}
+    Recall the definition of $S_d$ from Example 1.1.5. Show that $\sigma(S_d) = \mathcal{R}^d$, the Borel subsets of $\RR^d$.
+\end{exercise}
+\begin{proof}
+    The definition of $S_d$ is
+    \[
+        S_d = \Dset{\prod_{i=1}^d (a_i,b_i]}{-\infty\le a,b\le +\infty}
+    \]
+    It is obvious $S_d\subset\mathcal{R}^d$ whence $\sigma(S_d)\subset\mathcal{R}^d$.Then for any $\prod_{i=1}^d (a_i,b_i)$,
+    \[
+        \bigcup_{n=1}^\infty (\prod_{i=1}^d (a_i,b_i-\frac{1}{n}]) = \prod_{i=1}^d (a_i,b_i)
+    \]
+    The desired result follows from $\mathcal{R}^d$ is the $\sigma$-field of the right.
+\end{proof}
+
+\begin{exercise}
+    A $\sigma$-field $\mathcal{F}$ is said to be countably generated if there is a countable collection $\mathcal{C} \subset \mathcal{F}$
+    so that $\sigma(C) = F$. Show that $\mathcal{R}^d$ is countably generated.
+\end{exercise}
+
+\begin{solution}
+    Let
+    \[
+        \mathcal{U} = \Dset{\prod_{i=1}^{d} (a_i, b_i)}{a_i,b_i\in \QQ}
+    \]
+    Then $\mathcal{U}$ is countable since $\abs{\mathcal{U}}\le \abs{\QQ^{2d}}$. And $\sigma(\mathcal{U})=\mathcal{R}^d$ since for each  $\prod_{i=1}^d (a_i,b_i)$, there are $a_{i,k}, b_{i,k}\in \QQ$ such that $a_{i,k}\to a_i+0$ and $b_{i,k}\to b_i-0$ as $k\to \infty$ and then
+    \[
+        \bigcup_{k=1}^\infty (\prod_{i=1}^d (a_{i,k},b_{i,k})) = \prod_{i=1}^d (a_i,b_i)
+    \]
+\end{solution}
+
+\begin{exercise}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that if $\mathcal{F}_1 \subset  \mathcal{F}_2 \subset \dots$ are $\sigma$-algebras, then $\bigcup_i\mathcal{F}_i$ is an algebra.
+        \item Give an example to show that  $\bigcup_i\mathcal{F}_i$ need not be a $\sigma$-algebra.
+    \end{enumerate}
+\end{exercise}
+
+
+\begin{solution}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item For $A,B\in  \bigcup_i\mathcal{F}_i$, there is $F_k$ such that $A,B\in \mathcal{F}_k$, and then $A\cup B,A^c \in \mathcal{F}_k\subset  \bigcup_i\mathcal{F}_i$, whence  $\bigcup_i\mathcal{F}_i$ is an algebra.
+        \item Let $\Omega=\RR^\NN$ and $F_i=\Dset{U\times \RR^\NN}{U\in \mathcal{R}^i}$. While $[0,1]^i\times\RR^\NN\in\mathcal{F}_i$, but
+              \[
+                  [0,1]^\NN = \bigcap_{i=1}^\infty [0,1]^i\times\RR^\NN \notin  \bigcup_i\mathcal{F}_i
+              \]
+
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    A set $A \subset \Set{1, 2,\dots}$ is said to have asymptotic density  $\theta$ if
+    \[
+        \lim_{n\to\infty} \frac{\abs{A \cap \Set{1, 2, . . . , n}}}{n} = \theta
+    \]
+    Let $\mathcal{A}$ be the collection of sets for which the asymptotic density exists.
+    Is $\mathcal{A}$ a $\sigma$-algebra? an algebra?
+\end{exercise}
+
+\begin{solution}
+    $\mathcal{A}$ is not an algebra. The counterexample is shown in the following.
+
+    Let $A=\Set{2n}$ and $B=\Set{b_n}, b_n\in\Set{2n-1, 2n}$. Then $A,B$ have asymptotic densities $\flatfrac{1}{2}$.
+    And then let
+    \[
+        S_n = \abs{A\cap B \cap \Set{1,2,\dots,2n}} = \sum_{k=1}^{n} \abs{A\cap B \cap \Set{2k-1,2k}} = \sum_{k=1}^{n} c_k
+    \]
+    where
+    \[
+        c_k=\begin{cases}
+            0 & b_k=2k-1 \\
+            1 & b_k=2k
+        \end{cases}
+    \]
+    It means for any series $\Set{x_i}, x_i\in\Set{0,1}$, there exists $B$ with asymptotic density $\flatfrac{1}{2}$ such that $c_i=x_i$.
+    Hence let
+    \[
+        c_i = \begin{cases}
+            0 & i=1                         \\
+            1 & i = [3^{2k}+1  ,3^{2k+1}]   \\
+            0 & i = [3^{2k+1}+1  ,3^{2k+2}]
+        \end{cases}
+        \qquad        k\in\NN
+    \]
+
+
+    Then for $n=3^{2k+1}$, $S_n \ge \sum_{3^{2k}+1}^{3^{2k+1}} c_i = 2\times 3^{2k}= \frac{2}{3}n$  and for $n=3^{2k+2}$, $S_n= S_{3^{2k+1}}\le 3^{2k+1}= \frac{1}{3}n$.
+    So $L_n:=\flatfrac{ \abs{A\cap B \cap \Set{1,2,\dots,n}}}{n}\ge \flatfrac{1}{3}$ when $n=2\times3^{2k+1}$ and $L_n\le \frac{1}{6}$ when
+    $n=2\times 3^{2k+2}$, whence $L_n$ diverges and then $\mathcal{A}$ is not an algebra.
+
+\end{solution}
+
+\appendix
+\section{Related Theorem Details}
+
+
+\multido{}{6}{\stepcounter{section}}
+
+\subsection*{}
+\end{document}
