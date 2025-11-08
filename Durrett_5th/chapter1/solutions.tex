@@ -125,11 +125,118 @@
         and a lot of 0's to making $\flatfrac{S_{n+m}}{n+m}<\epsilon$ for any $\epsilon>0$. Thus the quotinet could fluctuates and then not converge.)}
 \end{solution}
 
+\section{Distributions}
+\begin{exercise}
+    Suppose $X$ and $Y$ are random variables on $(\Omega,\mathcal{F}, P)$ and let $A \in \mathcal{F}$.
+    Show that if we let $Z(\omega) = X(\omega)$ for $\omega \in A$ and $Z(\omega) = Y (\omega)$ for
+    $ \omega\in A^c$, then Z is a random variable.
+\end{exercise}
+\begin{solution}
+    $Z = X\cdot1_A+Y\cdot1_{A^c}$ is a random variable.
+\end{solution}
+
+\begin{exercise}
+    Let $\chi$ have the standard normal distribution. Use Theorem 1.2.6 to get upper and lower bounds on $P(\chi\le 4)$.
+\end{exercise}
+\begin{solution}
+    Theorem 1.2.6 is listed at \cref{thm: original 1.2.6}.
+    \[
+        P(\chi\le 4) = \int_{-\infty}^{4} e^{\flatfrac{x^2}{2}}\dif x = 1 - \int_{x}^{+\infty} e^{\flatfrac{x^2}{2}}\dif x
+    \]
+    Applying the theorem gives
+    \[
+        (\frac{1}{4}-\frac{1}{64})e^{-8} \le \int_{x}^{+\infty} e^{\flatfrac{x^2}{2}}\dif x \le \frac{1}{4}e^{-8}
+    \]
+    So
+    \[
+        1-\frac{1}{4}e^{-8} \le P(\chi\le 4) \le 1-\frac{15e^{-8}}{64}
+    \]
+\end{solution}
+\begin{exercise}
+    Show that a distribution function has at most countably many discontinuities.
+\end{exercise}
+\begin{solution}
+    This is a common conlusion in real analysis. Let $f$ be a distribution function, then $f$ is monotonic increasing.
+    Let $P$ be the set of discontinuities.
+    For each $x_0\in P$, $f_-(x_0)$, $f_+(x_0)$ exist and $f_-(x_0)$ < $f_-(x_0)$.
+    Then letting
+    \[
+        \mathcal{I}:= \Dset{\left(f_-(a), f_+(a)\right)}{a\in P}
+    \]
+    and
+    \begin{align*}
+        \varphi: & P\to \mathcal{I}                  \\
+                 & x_0 \mapsto (f_-(x_0) , f_-(x_0))
+    \end{align*}
+
+    intervals in $\mathcal{I}$ are disjoint and $\varphi$ is bijective and in since for any $x<y$,
+    \[
+        f_-(x) < f_+(x)\le f_-(y) < f_+(y)
+    \]
+    The desired result follows from $\mathcal{I}$, a collection of disjoint open intervals in $\RR$, is at most countable since $\exists q_{a,b}\in \QQ$, $q_{a,b}\in(a,b)\in\mathcal{I}$, 
+    and then $(a,b)\mapsto q_{a,b}$ is an injection to $\QQ$.
+\end{solution}
 \appendix
 \section{Related Theorem Details}
 
 
-\multido{}{6}{\stepcounter{section}}
+\multido{}{2}{\stepcounter{section}}
 
-\subsection*{}
+\subsection*{2}
+
+\begin{theorem}
+    \label{thm: asymptotic expansion of the Gaussian tail probability}
+    For $x>0$, leting
+    \[
+        I(x) := \int_{x}^{+\infty} e^{-\flatfrac{y^2}{2}}
+    \]
+    then for $n\in \NN$,
+    \[
+        I(x)= I_n(x) + R_n(x)
+    \]
+    where
+    \begin{align*}
+        I_n(x)
+        : & = e^{-x^2/2} \left( \frac{1}{x} - \frac{1}{x^3} + \frac{3}{x^5} - \frac{15}{x^7} + \cdots + (-1)^{n-1} \frac{(2n-3)!!}{x^{2n-1}} \right) \\
+          & = e^{-x^2/2} \sum_{k=1}^n (-1)^{k-1} \frac{(2k-3)!!}{x^{2k-1}}
+    \end{align*}
+    and
+    \[
+        R_n(x) := (-1)^n (2n-1)!! \int_x^{+\infty} \frac{e^{-y^2/2}}{y^{2n}}  \dif y
+    \]
+    by setting $(-1)!!=1$.
+    Then $I_{2k}(x)<I(x) <I_{2k+1}(x)$ for any $k\in\NN$.
+\end{theorem}
+\begin{proof}
+    Use induction on $n$. It's trivial for $n=0$ and assume it holds for $n=k$.
+    Since
+    \begin{align*}
+        \frac{R_k(x)}{(-1)^k (2k-1)!!} & =  \int_x^\infty \frac{e^{-y^2/2}}{y^{2k}}  \dif y  =  \int_x^{+\infty} -\frac{1}{y^{2k+1}}  \dif e^{-y^2/2}       \\
+                                       & = \left.\frac{-e^{-y^2/2}}{y^{2k+1}}\right|^{+\infty}_x - \int_x^{+\infty} \frac{(2k+1)e^{-y^2/2}}{y^{2k+2}}\dif y \\\
+                                       & = \frac{-e^{-x^2/2}}{x^{2k+1}} -(2k+1) \int_x^{+\infty} \frac{e^{-y^2/2}}{y^{2k+2}}\dif y                          \\
+                                       & = \frac{-e^{-x^2/2}}{x^{2k+1}} + \frac{R_{k+1}(x)}{(-1)^k (2k-1)!!}
+    \end{align*}
+
+    then
+    \begin{align*}
+        I & = I_k + R_k = I_k + (-1)^k (2k-1)!!\frac{-e^{-x^2/2}}{x^{2k+1}} + R_{k+1}(x) \\
+          & = I_{k+1}(x) + R_{k+1}(x)                                                    \\
+    \end{align*}
+    The last conclusion is obvious since $R_{2k}>0$ and $R_{2k+1}<0$ for any $k\in \NN$.
+\end{proof}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}[Theorem 1.2.6 in PTE5th]
+    \label{thm: original 1.2.6}
+    For $x> 0$,
+    \[
+        (x^{-1}-x^{-3})e^{-\flatfrac{x^2}{2}} \le \int_{x}^{+\infty} e^{-\flatfrac{y^2}{2}} \dif y \le  x^{-1}e^{-\flatfrac{x^2}{2}}
+    \]
+\end{theorem}
+\begin{proof}
+    We give a stronger conclusion and a more general proof in  \cref{thm: asymptotic expansion of the Gaussian tail probability}. The desired result directly follows from the cases of $n=1$ and $n=2$.
+\end{proof}
+
 \end{document}
