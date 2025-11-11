@@ -173,16 +173,115 @@
     \[
         f_-(x) < f_+(x)\le f_-(y) < f_+(y)
     \]
-    The desired result follows from $\mathcal{I}$, a collection of disjoint open intervals in $\RR$, is at most countable since $\exists q_{a,b}\in \QQ$, $q_{a,b}\in(a,b)\in\mathcal{I}$, 
+    The desired result follows from $\mathcal{I}$, a collection of disjoint open intervals in $\RR$, is at most countable since $\exists q_{a,b}\in \QQ$, $q_{a,b}\in(a,b)\in\mathcal{I}$,
     and then $(a,b)\mapsto q_{a,b}$ is an injection to $\QQ$.
 \end{solution}
+
+\begin{exercise}
+    Show that if $F(x) = P(X \le x)$ is continuous then $Y = F(X)$ has
+    a uniform distribution on $(0,1)$, that is, if $y \in [0, 1]$, $P(Y \le y) = y$.
+\end{exercise}
+\begin{proof}
+    We have $0 \ge F(x)\le 1$, so $P(Y\le y)=0$ for $y<0$ and $P(Y\le y)=1$ for $y>1$. For $y\in [0,1]$,
+    \[
+        P(Y\le y) = P(F(X) \le y) = P(X\in \Dset{h}{F(h)\le y})
+    \]
+    Let $h_0 = \sup \Dset{h}{F(h)\le y}$. Since $F$ is increasing and continuous,  $F(h_0) = y$. Therefore
+    \[
+        P(Y\le y) = P(X\le h_0) = F(h_0)=y
+    \]
+\end{proof}
+\begin{exercise}
+    \label{exc: 1.2.5}
+    Suppose $X$ has continuous density $f$, $P( \alpha \le  X\le \beta) = 1$ and
+    g is a function that is strictly increasing and differentiable on $(\alpha,\beta)$.
+    Then $g(X)$ has density
+    \[
+        \rho (y)=\begin{cases}
+
+            \frac{f(g^{-1}(y))}{g'(g^{-1}(y))} & y \in (g(\alpha), g(\beta)) \\
+            0                                  & otherwise
+        \end{cases}
+    \]
+    When $g(x) = ax + b$ with $a > 0$, $g^{-1}(y) = \frac{y - b}{a}$ so the answer is $\frac{1}{a}f(\frac{y - b}{a}).$
+\end{exercise}
+\begin{proof}
+    Since $g$ is strictly increasing, $g$ is invertible and
+    therefore
+    \[
+        P(g(X)\le y) = P(X\le g^{-1}(y))=
+        \begin{cases}
+            0                                    & y\in (-\infty, g(\alpha)] \\
+            \int_{\alpha}^{g^{-1}(y)} f(x)\dif x & y\in(g(\alpha), g(\beta)) \\
+            1                                    & y\in [g(\beta), +\infty)
+        \end{cases}
+    \]
+    We could direct differentiate the right or replace $x=g^{-1}(u)$, and then
+    \[
+        \int_{\alpha}^{g^{-1}(y)} f(x)\dif x = \int_{g(\alpha)}^{y} f(g^{-1}(u))\dif g^{-1}(u) = \int_{g(\alpha)}^{y} \frac{f(g^{-1}(u))}{g'(g^{-1}(u))} \dif u
+    \]
+\end{proof}
+\begin{exercise}
+    Suppose $X$ has a normal distribution. Use the previous exercise to compute the density of $\exp(X)$.
+    (The answer is called the lognormal distribution.)
+\end{exercise}
+\begin{proof}
+    By \cref{exc: 1.2.5}, letting $f(x)=\frac{1}{\sqrt{2\pi}}e^{\flatfrac{-x^2}{2}}$, the distribution is
+    \[
+        g(x) = \begin{cases}
+            \frac{f(\ln x)}{\exp(\ln(x))} = \frac{1}{x\sqrt{2\pi}}e^{-\frac{(\ln x)^2}{2}} & x\in (0,+\infty)  \\
+            0                                                                              & x\in (-\infty, 0]
+        \end{cases}
+    \]
+\end{proof}
+
+\begin{exercise}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose $X$ has density function $f$. Compute the distribution function of $X^2$ and then differentiate to find its density function.
+        \item Work out the answer when X has a standard normal distribution to find the density of the chi-square distribution.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item Since
+              \[
+                  P(X^2\le y) =
+                  \begin{cases}
+                      0                                        & y\in (-\infty, 0] \\
+                      P\left(-\sqrt{y}\le X\le \sqrt{y}\right) & y\in (0,+\infty)
+                  \end{cases}
+              \]
+              and replacing $x=\sqrt{u}$,
+              \begin{align*}
+                  P\left(-\sqrt{y}\le X\le \sqrt{y}\right) & = \int_{-\sqrt{y}}^{\sqrt{y}} f(x)\dif x = \int_{0}^{\sqrt{y}} (f(x)+f(-x))\dif x                                     \\
+                                                           & =\int_0^{y} (f(\sqrt{u})+ f(-\sqrt{u})) \dif \sqrt{u} = \int_0^{y} \frac{f(\sqrt{u})+ f(-\sqrt{u})}{2\sqrt{u}} \dif u
+              \end{align*}
+              $X^2$ has a density function,
+              \[
+                  g(y)=\begin{cases}
+                      0                                        & y\in (-\infty, 0] \\
+                      \frac{f(\sqrt{y})+ f(-\sqrt{y})}{2\sqrt{y}} & y\in (0,+\infty)
+                  \end{cases}
+              \]
+
+              (\textit{We can not directly differentiate the definite intergrals with variable limits, since it may be indifferentiable when $f$ is discontinuous})
+        \item Applying above conclusion, the density is 
+        \[
+                  g(y)=\begin{cases}
+                      0                                        & y\in (-\infty, 0] \\
+                      \frac{e^{\flatfrac{-y}{2}}}{\sqrt{2\pi y}} & y\in (0,+\infty)
+                  \end{cases}
+        \]
+    \end{enumerate}
+\end{proof}
 \appendix
-\section{Related Theorem Details}
+\section{Some related theorem details}
 
+\stepcounter{section}
 
-\multido{}{2}{\stepcounter{section}}
-
-\subsection*{2}
+\subsection*{2\quad Distributions}
 
 \begin{theorem}
     \label{thm: asymptotic expansion of the Gaussian tail probability}
