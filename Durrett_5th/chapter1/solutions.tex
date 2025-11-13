@@ -261,21 +261,103 @@
               $X^2$ has a density function,
               \[
                   g(y)=\begin{cases}
-                      0                                        & y\in (-\infty, 0] \\
+                      0                                           & y\in (-\infty, 0] \\
                       \frac{f(\sqrt{y})+ f(-\sqrt{y})}{2\sqrt{y}} & y\in (0,+\infty)
                   \end{cases}
               \]
 
               (\textit{We can not directly differentiate the definite intergrals with variable limits, since it may be indifferentiable when $f$ is discontinuous})
-        \item Applying above conclusion, the density is 
-        \[
+        \item Applying above conclusion, the density is
+              \[
                   g(y)=\begin{cases}
-                      0                                        & y\in (-\infty, 0] \\
+                      0                                          & y\in (-\infty, 0] \\
                       \frac{e^{\flatfrac{-y}{2}}}{\sqrt{2\pi y}} & y\in (0,+\infty)
                   \end{cases}
-        \]
+              \]
     \end{enumerate}
 \end{proof}
+\section{Random Variables}
+\begin{exercise}
+    Show that if $\mathcal{A}$ generates $\mathcal{S}$,
+    then $X^{-1}(\mathcal{A})  \equiv \Set{\Set{X \in A} : A \in \mathcal{A}}$ generates   $\sigma(X) = \Set{\Set{X \in B} : B \in \mathcal{S}}$.
+\end{exercise}
+\begin{proof}
+    It is equivalent to prove $\sigma(X^{-1}(\mathcal{A}))= \sigma(X)$. Since $X^{-1}(\mathcal{A})\subset \sigma(X)$ is obvious and hence $\sigma(X^{-1}(\mathcal{A}))\subset \sigma(X)$,
+    it suffices to prove  $\sigma(X^{-1}(\mathcal{A}))\subset \sigma(X)$.
+    Considering
+    \[
+        \mathcal{E}:= \Dset{B\in \mathcal{S}}{X^{-1}(B)\in \sigma(X^{-1}(\mathcal{A}))}
+    \]
+    it is not diffcult to see $\mathcal{E}$ is $\sigma$-algebra containing $\mathcal{A}$, whence $\mathcal{S}\subset\mathcal{E}$ and then $\sigma(X^{-1}(\mathcal{A}))\subset \sigma(X)$.
+
+    A more common statement is
+    \[
+        \sigma(X^{-1}(\mathcal{A})) = X^{-1}(\sigma(\mathcal{A}))
+    \]
+\end{proof}
+
+\begin{exercise}
+    Prove Theorem 1.3.6 when $n = 2$ by checking $\Set{X_1+X_2 < x} \in \mathcal{F}$.
+\end{exercise}
+\begin{proof}
+    Theorem 1.3.6 is listed at \cref{thm: original 1.3.6}.
+    We observe that
+    \[
+        \Set{X_1+X_2 < x} = \bigcup_{q\in \QQ} \Set{X_1<q}\cap\Set{X_2<x-q}
+    \],
+    since the left set contains the right set is obvious and for each $(x_1, x_2)\in  \Set{X_1+X_2 < x}$ , there is $x_1<x-x_2$ and $q_0\in\QQ$,
+    $x_1<q_0<x-x_2$, whence $(x_1, x_2)\in\Set{X_1<q_0}\cap\Set{X_2<x-q_0}$ and the left set is contained in the right set.
+
+    For the complete proof of $n=k$, we could use the induction on $n$ and the fact that $X_1+\dots+X_k= (X_1+\dots+X_{k-1})+X_k$.
+
+\end{proof}
+
+\begin{exercise}
+    Show that if $f$ is continuous and $X_n \to X$ almost surely then $f(X_n) \to f(X)$ almost surely.
+\end{exercise}
+\begin{proof}
+    For $\omega\in \Set{X_n\to X}$, $f((X_n)(\omega)) \to f(X(\omega))$. Therefore, $\Set{X_n \to X} \subset \Set{f(X_n) \to f(X)}$
+    and hence
+    \[
+        P\left( \Set{f(X_n) \to f(X)}\right) \ge P\left(\Set{X_n \to X}\right) =1
+    \]
+\end{proof}
+
+\begin{exercise}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that a continuous function from $\RR^d \to \RR$ is a measurable map from $(\RR^d,\mathcal{R}^d)$ to $(\RR,\mathcal{R})$.
+        \item Show that $\mathcal{R}^d$ is the smallest $\sigma$-field that makes all the continuous functions measurable.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    Let $f$ be a continuous function from $\RR^d \to \RR$.
+    \begin{enumerate}[label=(\roman*)]
+
+        \item  It suffices to prove for all open set $V\subset \RR$, $f^{-1}(V)\in \mathcal{R}^d$. Actually $f^{-1}(V)$ is an open set in $\RR^n$ and hence in $\mathcal{R}^d$, which is a directly result from  general topology and can be proven by the following.
+
+              For each $x\in f^{-1}(V)$,there is $\epsilon_x>0$ such that the open ball $U(f(x), \epsilon_x)\subset V$ and hence there is $\delta_x>0$,
+              \[
+                  f(U(x, \delta_x))\subset U(f(x), \epsilon_x)\subset V
+              \]
+              So
+              \[
+                  f^{-1}(V) = \bigcup_{x\in f^{-1}(V)} U(x, \delta_x)
+              \]
+              is an open set contiained in $\mathcal{R}^n$.
+        \item Let $\mathcal{F}$ be the smallest $\sigma$-field that makes all the continuous functions measurable. For the continuous function,
+              \[
+                  f_{x_0,d_0}(x)=d_0 - d(x_0, x)
+              \]
+              there is
+              \[
+                  \Set{f_{x_0,d_0}>0}=\Set{d(x_0, x)>d_0} = U(x_0, d_0)\in \mathcal{F}
+              \]
+              So $\mathcal{F}$ contains all open balls and hence contains all open set, which gives $\mathcal{R}^n\subset\mathcal{F}$. The desired result follows.
+    \end{enumerate}
+\end{proof}
+
 \appendix
 \section{Some related theorem details}
 
@@ -337,5 +419,13 @@
 \begin{proof}
     We give a stronger conclusion and a more general proof in  \cref{thm: asymptotic expansion of the Gaussian tail probability}. The desired result directly follows from the cases of $n=1$ and $n=2$.
 \end{proof}
+
+\stepcounter{section}
+\subsection*{3\quad Random Variables}
+
+\begin{theorem}[Theorem 1.3.6 in PTE5th]
+    \label{thm: original 1.3.6}
+    If $X_1,\dots ,X_n$ are random variables then $X_1 +\dots+ X_n$ is a random variable.
+\end{theorem}
 
 \end{document}
