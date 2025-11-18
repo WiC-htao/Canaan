@@ -358,6 +358,117 @@
     \end{enumerate}
 \end{proof}
 
+\begin{exercise}
+    \label{exc: l.s.c}
+    A function $f$ is said to be lower semicontinuous or l.s.c. if
+    \[
+        \liminf_{y\to x} f(y) \ge f(x)
+    \]
+    and upper semicontinuous (u.s.c.) if $-f$ is l.s.c.
+    Show that $f$ is l.s.c.
+    if and only if $\Set{x : f(x) \le a}$ is closed for each $a \in \RR$ and conclude that semicontinuous functions are measurable.
+\end{exercise}
+\begin{proof}
+    Let $S=\Set{x : f(x) \le a}$.
+    To prove the forward direction, for $\Set{x_n}\subset S$, $x_n\to x$ implies $f(x)\le \liminf x_n\le a $, whence $x\in S$ and $S$ is closed.
+    For the contrary direction, suppose $a=\liminf_{y\to x}f(y)$ and there is a sequence $x_n\to x$, $f(x_n)\to a$.
+    Since $S_\epsilon=\Dset{x}{f(x)\le a+\epsilon}$ is closed and $\Set{x_n}_{n\ge m}\subset S_\epsilon$ for a large $m$, $x\in S_\epsilon$.
+    So
+    \[
+        x \in \bigcap_{n=1}^\infty S_{\frac{1}{n}} = \Dset{x}{f(x)\le a}
+    \]
+    Therefore $f(x)\le a=\liminf_{y\to x}f(y)$ and $f$ is l.s.c.
+    Then $f$ is measurable follows from $\Dset{x}{f(x)>a}$ is an open set and then a measurable set.
+\end{proof}
+
+\begin{exercise}
+    Let $f: \RR^d \to \RR$ be an arbitrary function and let $f^\delta(x) =\sup\Set{f(y) : |y - x| < \delta}$
+    and $f_\delta(x) = \inf\Set{f(y) : |y - x| < \delta}$ where
+    $\abs{z} = (z^2_1 + \dots + z^2_d)^{\flatfrac{1}{2}}$. Show that $f^\delta$ is l.s.c. and $f_\delta$ is u.s.c.
+    Let $f^0 = \lim_{\delta\to 0} f^\delta$, $f_0 = \lim{\delta\to 0} f_\delta$,
+    and conclude that the set of points at which $f$ is discontinuous $= \Set{f^0 \neq f_0}$ is measurable.
+    % follows from the fact that f0 − f0 is.
+\end{exercise}
+\begin{proof}
+    Use the conclusion in \cref{exc: l.s.c} to prove $f^\delta$ is a l.s.c.
+    Let $S=\Set{x : f(x) \le a}$ and $\Set{x_n}\subset S$, $x_n\to x$. Suppose $f^\delta(x)>a$ for the sake of contradiction.
+    There is $f(y)>a+\epsilon$ where $\abs{y-x}<\delta-\tau$ and $\abs{x_k-x}<\tau$ for a large $k$.
+    Thus $\abs{x_k-y}<\delta$ and $f^\delta(x_k)\ge f(y)=a+\epsilon$ leads a contradiction with $x_k\in a$.
+    $f^\delta$ is l.s.c follows from $x\in S$ and then $S$ is closed. And $f_\delta$ is a u.s.c since
+    \[
+        -f_\delta = -\inf\Set{f(y) : |y - x| < \delta} = \sup\Set{-f(y) : |y - x| < \delta} =(-f)^\delta
+    \]
+    whence $-f_\delta$ is a l.s.c.
+
+    It suffices to prove $f_0(x)=  f(x)\land \liminf\limits_{y\to x} f(y)$ and $f^0(x)= f(x)\lor \limsup\limits_{y\to x} f(y)$.
+    And it follows from
+    \[
+        f_\delta(x)=\inf\Set{f(y) : \abs{y - x} < \delta} = f(x) \land \inf\Set{f(y): 0<\abs{y-x}<\delta} \to f(x)+\liminf_{y\to x} f(y)
+    \]
+    as $\delta\to 0$ and so does $f^0$.
+\end{proof}
+
+\begin{exercise}
+    \label{exc: 1.3.7}
+    A function $\varphi: \Omega\to \RR$ is said to be simple if
+    \[
+        \varphi(\omega) = \sum_{m=1}^{n} c_m 1_{A_m}(\omega)
+    \]
+
+    where the $c_m$ are real numbers and $A_m \in  \mathcal{F}$.
+    Show that the class of $\mathcal{F}$ measurable functions is the smallest class containing the simple functions
+    and closed under pointwise limits.
+\end{exercise}
+\begin{proof}
+    By Theorem 1.3.6 in PTE5th(listed at \cref{thm: original 1.3.7}), it is obvious simple functions
+    and their pointwise limits are measurable functions.
+    It is suffices to prove for each measurable function $f$, there is a sequence of simple functions $\Set{f_n}$, $f_n\to f$.
+    Define
+    \[
+        f_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{A_{m,k}}
+    \]
+    where $A_{m,k}=f^{-1}([m+\frac{k}{n}, m+\frac{k+1}{n}))$ and then $f_n\to f$.
+\end{proof}
+
+\begin{exercise}
+    \label{exec: 1.3.8}
+    Use the previous exercise to conclude that $Y$ is measurable with respect to $\sigma(X)$ if and only if $Y = f(X)$ where $f: R \to R$ is measurable.
+\end{exercise}
+\begin{solution}
+
+    It is easy to prove it's sufficient. For the contrary direction, we define $Y_n\to Y$ like $f_n\to f$ in \cref{exc: 1.3.7}.
+    Thus
+    \[
+        Y_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{A_{m,k}^{(n)}}
+    \]
+    where $A_{m,k}^{(n)}=Y^{-1}([m+\frac{k}{n}, m+\frac{k+1}{n}))\in \sigma(X)$ are disjoint. And since $\sigma(X) = X^{-1}(\mathcal{B})$,
+    there must be $C\in \mathcal{B}$ such that $X^{-1}(C)=A_{m,k}^{(n)}$.
+    Let
+    \[
+        B_{m,k}^{(n)}=\bigcap_{C_i\in \mathcal{C}} C_i,\quad \mathcal{C} = \Dset{X\in \mathcal{B}}{X^{-1}(C)=A^{(n)}_{m,k}}
+    \]
+    and then $B^{(n)}_{m,k}\in \mathcal{B}$, $X^{-1}(B_{m,k}^{(n)})=A_{m,k}^{(n)}$ and $B_{m,k}^{(n)}$ are disjoint for a fixing $n$ and different $m,k$.
+    So we define
+    \[
+        f_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{B_{m,k}^{(n)}}
+    \]
+    and hence $Y_n=f_n(X)$, $f_n$ is measurable.
+
+    Let $f=\lim_{n\to \infty} f_n$ where $f_n$ is convergent since if $x$ belongs to a certain $B_{m,k}^{(n)}$,
+    then $f_n(x)$ is increasing over $n$ otherwise always 0.
+    Then $Y=f(X)$ since $Y_n=f_n(X)\to Y=f(x)$ as $n\to\infty$ and $f$ is measurable follows from $f$ is a limit of simple functions.
+\end{solution}
+
+\begin{exercise}
+    To get a constructive proof of the last result, note that $\Set{\omega:m2^{-n} \le Y < (m + 1)2^{n}} = {X \in  B_{m,n}}$ for some $B_{m,n} \in R$ and
+    set $f_n(x) = m2^{-n}$ for $x \in B_{m,n}$ and show that as $n \to \infty$, $fn(x) \to f(x)$.
+    and $Y = f(X)$.
+\end{exercise}
+\begin{solution}
+    Just a hint for \cite{exec: 1.3.8}. The specific forms of simple functions approaching to $Y$ is not critical. 
+    But it's curious that if the diction here implies there is a simpler and non-constructive proof.
+\end{solution}
+
 \appendix
 \section{Some related theorem details}
 
@@ -405,9 +516,6 @@
     \end{align*}
     The last conclusion is obvious since $R_{2k}>0$ and $R_{2k+1}<0$ for any $k\in \NN$.
 \end{proof}
-\begin{proof}
-
-\end{proof}
 
 \begin{theorem}[Theorem 1.2.6 in PTE5th]
     \label{thm: original 1.2.6}
@@ -427,5 +535,11 @@
     \label{thm: original 1.3.6}
     If $X_1,\dots ,X_n$ are random variables then $X_1 +\dots+ X_n$ is a random variable.
 \end{theorem}
-
+\begin{theorem}[Theorem 1.3.7 in PTE5th]
+    \label{thm: original 1.3.7}
+    If $X_1,X_2, \dots$ are random variables then so are
+    \begin{align*}
+         & \inf_n X_n, &  & \sup_n Xn, & \limsup_n Xn, &  & \liminf_n Xn &
+    \end{align*}
+\end{theorem}
 \end{document}
