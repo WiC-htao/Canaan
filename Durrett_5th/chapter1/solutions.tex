@@ -32,7 +32,7 @@
 \begin{exercise}
     Recall the definition of $S_d$ from Example 1.1.5. Show that $\sigma(S_d) = \mathcal{R}^d$, the Borel subsets of $\RR^d$.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     The definition of $S_d$ is
     \[
         S_d = \Dset{\prod_{i=1}^d (a_i,b_i]}{-\infty\le a,b\le +\infty}
@@ -42,7 +42,7 @@
         \bigcup_{n=1}^\infty (\prod_{i=1}^d (a_i,b_i-\frac{1}{n}]) = \prod_{i=1}^d (a_i,b_i)
     \]
     The desired result follows from $\mathcal{R}^d$ is the $\sigma$-field of the right.
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     A $\sigma$-field $\mathcal{F}$ is said to be countably generated if there is a countable collection $\mathcal{C} \subset \mathcal{F}$
@@ -181,7 +181,7 @@
     Show that if $F(x) = P(X \le x)$ is continuous then $Y = F(X)$ has
     a uniform distribution on $(0,1)$, that is, if $y \in [0, 1]$, $P(Y \le y) = y$.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     We have $0 \ge F(x)\le 1$, so $P(Y\le y)=0$ for $y<0$ and $P(Y\le y)=1$ for $y>1$. For $y\in [0,1]$,
     \[
         P(Y\le y) = P(F(X) \le y) = P(X\in \Dset{h}{F(h)\le y})
@@ -190,7 +190,7 @@
     \[
         P(Y\le y) = P(X\le h_0) = F(h_0)=y
     \]
-\end{proof}
+\end{solution}
 \begin{exercise}
     \label{exc: 1.2.5}
     Suppose $X$ has continuous density $f$, $P( \alpha \le  X\le \beta) = 1$ and
@@ -205,7 +205,7 @@
     \]
     When $g(x) = ax + b$ with $a > 0$, $g^{-1}(y) = \frac{y - b}{a}$ so the answer is $\frac{1}{a}f(\frac{y - b}{a}).$
 \end{exercise}
-\begin{proof}
+\begin{solution}
     Since $g$ is strictly increasing, $g$ is invertible and
     therefore
     \[
@@ -220,12 +220,12 @@
     \[
         \int_{\alpha}^{g^{-1}(y)} f(x)\dif x = \int_{g(\alpha)}^{y} f(g^{-1}(u))\dif g^{-1}(u) = \int_{g(\alpha)}^{y} \frac{f(g^{-1}(u))}{g'(g^{-1}(u))} \dif u
     \]
-\end{proof}
+\end{solution}
 \begin{exercise}
     Suppose $X$ has a normal distribution. Use the previous exercise to compute the density of $\exp(X)$.
     (The answer is called the lognormal distribution.)
 \end{exercise}
-\begin{proof}
+\begin{solution}
     By \cref{exc: 1.2.5}, letting $f(x)=\frac{1}{\sqrt{2\pi}}e^{\flatfrac{-x^2}{2}}$, the distribution is
     \[
         g(x) = \begin{cases}
@@ -233,7 +233,7 @@
             0                                                                              & x\in (-\infty, 0]
         \end{cases}
     \]
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     \leavevmode
@@ -242,7 +242,7 @@
         \item Work out the answer when X has a standard normal distribution to find the density of the chi-square distribution.
     \end{enumerate}
 \end{exercise}
-\begin{proof}
+\begin{solution}
     \leavevmode
     \begin{enumerate}[label=(\roman*)]
         \item Since
@@ -275,13 +275,13 @@
                   \end{cases}
               \]
     \end{enumerate}
-\end{proof}
+\end{solution}
 \section{Random Variables}
 \begin{exercise}
     Show that if $\mathcal{A}$ generates $\mathcal{S}$,
     then $X^{-1}(\mathcal{A})  \equiv \Set{\Set{X \in A} : A \in \mathcal{A}}$ generates   $\sigma(X) = \Set{\Set{X \in B} : B \in \mathcal{S}}$.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     It is equivalent to prove $\sigma(X^{-1}(\mathcal{A}))= \sigma(X)$. Since $X^{-1}(\mathcal{A})\subset \sigma(X)$ is obvious and hence $\sigma(X^{-1}(\mathcal{A}))\subset \sigma(X)$,
     it suffices to prove  $\sigma(X^{-1}(\mathcal{A}))\subset \sigma(X)$.
     Considering
@@ -294,12 +294,12 @@
     \[
         \sigma(X^{-1}(\mathcal{A})) = X^{-1}(\sigma(\mathcal{A}))
     \]
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     Prove Theorem 1.3.6 when $n = 2$ by checking $\Set{X_1+X_2 < x} \in \mathcal{F}$.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     Theorem 1.3.6 is listed at \cref{thm: original 1.3.6}.
     We observe that
     \[
@@ -310,18 +310,18 @@
 
     For the complete proof of $n=k$, we could use the induction on $n$ and the fact that $X_1+\dots+X_k= (X_1+\dots+X_{k-1})+X_k$.
 
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     Show that if $f$ is continuous and $X_n \to X$ almost surely then $f(X_n) \to f(X)$ almost surely.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     For $\omega\in \Set{X_n\to X}$, $f((X_n)(\omega)) \to f(X(\omega))$. Therefore, $\Set{X_n \to X} \subset \Set{f(X_n) \to f(X)}$
     and hence
     \[
         P\left( \Set{f(X_n) \to f(X)}\right) \ge P\left(\Set{X_n \to X}\right) =1
     \]
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     \leavevmode
@@ -331,7 +331,7 @@
     \end{enumerate}
 \end{exercise}
 
-\begin{proof}
+\begin{solution}
     Let $f$ be a continuous function from $\RR^d \to \RR$.
     \begin{enumerate}[label=(\roman*)]
 
@@ -356,7 +356,7 @@
               \]
               So $\mathcal{F}$ contains all open balls and hence contains all open set, which gives $\mathcal{R}^n\subset\mathcal{F}$. The desired result follows.
     \end{enumerate}
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     \label{exc: l.s.c}
@@ -368,7 +368,7 @@
     Show that $f$ is l.s.c.
     if and only if $\Set{x : f(x) \le a}$ is closed for each $a \in \RR$ and conclude that semicontinuous functions are measurable.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     Let $S=\Set{x : f(x) \le a}$.
     To prove the forward direction, for $\Set{x_n}\subset S$, $x_n\to x$ implies $f(x)\le \liminf x_n\le a $, whence $x\in S$ and $S$ is closed.
     For the contrary direction, suppose $a=\liminf_{y\to x}f(y)$ and there is a sequence $x_n\to x$, $f(x_n)\to a$.
@@ -379,7 +379,7 @@
     \]
     Therefore $f(x)\le a=\liminf_{y\to x}f(y)$ and $f$ is l.s.c.
     Then $f$ is measurable follows from $\Dset{x}{f(x)>a}$ is an open set and then a measurable set.
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     Let $f: \RR^d \to \RR$ be an arbitrary function and let $f^\delta(x) =\sup\Set{f(y) : |y - x| < \delta}$
@@ -389,7 +389,7 @@
     and conclude that the set of points at which $f$ is discontinuous $= \Set{f^0 \neq f_0}$ is measurable.
     % follows from the fact that f0 − f0 is.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     Use the conclusion in \cref{exc: l.s.c} to prove $f^\delta$ is a l.s.c.
     Let $S=\Set{x : f(x) \le a}$ and $\Set{x_n}\subset S$, $x_n\to x$. Suppose $f^\delta(x)>a$ for the sake of contradiction.
     There is $f(y)>a+\epsilon$ where $\abs{y-x}<\delta-\tau$ and $\abs{x_k-x}<\tau$ for a large $k$.
@@ -406,7 +406,7 @@
         f_\delta(x)=\inf\Set{f(y) : \abs{y - x} < \delta} = f(x) \land \inf\Set{f(y): 0<\abs{y-x}<\delta} \to f(x)+\liminf_{y\to x} f(y)
     \]
     as $\delta\to 0$ and so does $f^0$.
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     \label{exc: 1.3.7}
@@ -419,7 +419,7 @@
     Show that the class of $\mathcal{F}$ measurable functions is the smallest class containing the simple functions
     and closed under pointwise limits.
 \end{exercise}
-\begin{proof}
+\begin{solution}
     By Theorem 1.3.6 in PTE5th(listed at \cref{thm: original 1.3.7}), it is obvious simple functions
     and their pointwise limits are measurable functions.
     It is suffices to prove for each measurable function $f$, there is a sequence of simple functions $\Set{f_n}$, $f_n\to f$.
@@ -428,7 +428,7 @@
         f_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{A_{m,k}}
     \]
     where $A_{m,k}=f^{-1}([m+\frac{k}{n}, m+\frac{k+1}{n}))$ and then $f_n\to f$.
-\end{proof}
+\end{solution}
 
 \begin{exercise}
     \label{exec: 1.3.8}
@@ -439,18 +439,18 @@
     It is easy to prove it's sufficient. For the contrary direction, we define $Y_n\to Y$ like $f_n\to f$ in \cref{exc: 1.3.7}.
     Thus
     \[
-        Y_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{A_{m,k}^{(n)}}
+        Y_n = \sum_{m=-n2^n}^{n2^n-1}  \frac{m}{2^n} 1_{A_{m,n}}
     \]
-    where $A_{m,k}^{(n)}=Y^{-1}([m+\frac{k}{n}, m+\frac{k+1}{n}))\in \sigma(X)$ are disjoint. And since $\sigma(X) = X^{-1}(\mathcal{B})$,
-    there must be $C\in \mathcal{B}$ such that $X^{-1}(C)=A_{m,k}^{(n)}$.
+    where $A_{m,n}=Y^{-1}([\frac{m}{2^n},\frac{m+1}{2^n}))\in \sigma(X)$ are disjoint. And since $\sigma(X) = X^{-1}(\mathcal{B})$,
+    there must be $C\in \mathcal{B}$ such that $X^{-1}(C)=A_{m,n}$.
     Let
     \[
-        B_{m,k}^{(n)}=\bigcap_{C_i\in \mathcal{C}} C_i,\quad \mathcal{C} = \Dset{X\in \mathcal{B}}{X^{-1}(C)=A^{(n)}_{m,k}}
+        B_{m,n}=\bigcap_{C_i\in \mathcal{C}} C_i,\quad \mathcal{C} = \Dset{X\in \mathcal{B}}{X^{-1}(C)=A_{m,n}}
     \]
-    and then $B^{(n)}_{m,k}\in \mathcal{B}$, $X^{-1}(B_{m,k}^{(n)})=A_{m,k}^{(n)}$ and $B_{m,k}^{(n)}$ are disjoint for a fixing $n$ and different $m,k$.
+    and then $B_{m,n}\in \mathcal{B}$, $X^{-1}(B_{m,n})=A_{m,n}$ and $B_{m,n}$ are disjoint for a fixing $n$ and different $m$.
     So we define
     \[
-        f_n = \sum_{m=-n}^{n-1} \sum_{k=0}^{n-1} (m+\frac{k}{n}) 1_{B_{m,k}^{(n)}}
+        f_n = \sum_{m=-n2^n}^{n2^n-1}  \frac{m}{2^n} 1_{B_{m,n}}
     \]
     and hence $Y_n=f_n(X)$, $f_n$ is measurable.
 
@@ -465,10 +465,75 @@
     and $Y = f(X)$.
 \end{exercise}
 \begin{solution}
-    Just a hint for \cite{exec: 1.3.8}. The specific forms of simple functions approaching to $Y$ is not critical. 
+    Just a hint for \cref{exec: 1.3.8}. The specific forms of simple functions approaching to $Y$ is not critical.
     But it's curious that if the diction here implies there is a simpler and non-constructive proof.
 \end{solution}
 
+\section{Integration}
+\begin{exercise}
+    Show that if $f \ge 0$ and $\int f \dif \mu = 0$ then $f = 0$ a.e.
+\end{exercise}
+\begin{solution}
+    Let $A_n={f\ge \frac{1}{n}}$.
+    Then
+    \[
+        0=\int f \dif \mu \ge \int \frac{1_{A_n}}{n} \dif \mu= \frac{1}{n}\mu(A_n) \ge 0
+    \]
+    Hence $\mu(A_n)=0$ and $\mu(A_n^c)=1$. Thus $\mu(\Set{f=0}) = \mu(\bigcap A_n^c) =1$
+\end{solution}
+
+\begin{exercise}
+    Let $f \ge 0$ and $E_{n,m} = \Set{x : m/2^n \le f(x) < (m + 1)/2^n}$. As
+    $n \to \infty$,
+    \[
+        \sum_{m=1}^\infty \frac{m}{2^n}\mu(E_{n,m})\nearrow \int f \dif \mu
+    \]
+\end{exercise}
+\begin{solution}
+    Let $f_n=  \sum_{m=1}^\infty \frac{m}{2^n}1_{E_{n,m}}$. And then left hand is equal to $\int f_n\dif \mu$ and $\int f_n\dif \mu \le \int f\dif \mu$.
+    Recall
+    \[
+        \int f \dif \mu = \sup \Set{\int h \dif \mu : 0 \le h \le f, h \text{ is bounded and } \mu(\Set{x : h(x) > 0}) < 1}
+    \]
+    For such $h$ and $C=\Set{x: h(x)>0}$, $h\le 1_C\sum_{m=1}^\infty \frac{m+1}{2^n}1_{E_{n,m}} \le 1_C(f_n+\frac{1}{2^n})$.
+    So
+    \[
+        \int f_n \dif \mu \ge \int h \dif \mu - \frac{\mu(C)}{2^n}\to \int h \dif \mu
+    \]
+    The desired result follows from
+    \[
+        \int f \dif \mu \ge \limsup \int f\dif\mu \ge \liminf \int f\dif\mu \ge \sup_h \Set{\int h\dif \mu} = \int f\dif \mu
+    \]
+
+
+\end{solution}
+\begin{exercise}
+    Let $g$ be an integrable function on $\RR$ and $\epsilon > 0$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Use the definition of the integral to conclude there is a simple function $\varphi =\sum_k b_k1_{A_k}$ with $\int \abs{g-\varphi} \dif x<\epsilon$.
+        \item Use Lemma A.2.1 to approximate the $A_k$ by finite unions of intervals to get a step function
+              \[
+                  q=\sum_{j=1}^{k} c_j1(a_{j-1},a_j)
+              \]
+              with $a_0 < a_1 < \dots < a_k$, so that $\int \abs{\varphi-q} \dif x <\epsilon$.
+        \item Round the corners of $q$ to get a continuous function $r$ so that $\int\abs{q-r}\dif x < \epsilon$.
+
+    \end{enumerate}(i)
+\end{exercise}
+
+\begin{solution}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $g=g^+ - g^-$ where $g^+ = g\lor 0$ and $g^- =-g\lor 0$. Thus there are simple functions $h_1, h_2$ such that
+              $\int \abs{g^+ -h_1} \dif x<\flatfrac{\epsilon}2$ and $\int \abs{g^- -h_2} \dif x<\flatfrac{\epsilon}2$. Then $\varphi = h_1-h_2$ is a simple function and
+              \[
+                \int \abs{g -\varphi} \dif x = \int \abs{(g^+-h_1) - (g^- -h_2)} \dif x \le \int \abs{g^+ -h_1} \dif x + \int \abs{g^- -h_2} \dif x < \epsilon
+              \] 
+
+        \item To make a continuous function replace each $c_j1_{(aj-1,aj )}$ by  a function that is 0 \textbf{on} $(a_{j-1}, a_j)^c$, $c_j$ on $(a_{j-1+\delta}, a_j-\delta)$, and linear otherwise. If
+    \end{enumerate}
+
+\end{solution}
 \appendix
 \section{Some related theorem details}
 
