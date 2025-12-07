@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+
+\usepackage{../../header}
+
+\newcommand{\thechapter}{1}
+
+\renewcommand{\theexercise}{\thechapter.\arabic{section}.\arabic{exercise}}
+
+\renewcommand{\thetheorem}{\thechapter.\arabic{section}.\arabic{theorem}}
+
+\title{GTM 73 Chapter{\thechapter} Solutions}
+\author{htao}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+
+\end{exercise}
+\begin{solution}
+    $\NN^*$ and $\NN$
+\end{solution}
+\begin{exercise}
+
+\end{exercise}
+\begin{solution}
+    Nothing more than a easy verification.
+\end{solution}
+
+\begin{exercise}
+
+\end{exercise}
+\begin{solution}
+    No. A counterexample is
+    \[
+        G=\Dset{
+            \begin{pmatrix}
+                a & b \\
+                0 & 0 \\
+            \end{pmatrix}
+        }{a,b,c,d\in \RR}
+    \]
+    with left identity
+    \[
+        \begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix}
+    \]
+    and right inverse
+    \[
+        \begin{pmatrix}
+            a^{-1} & 0 \\
+            0      & 0
+        \end{pmatrix}
+    \]
+    However, it has other left identities
+    \[
+        \begin{pmatrix}
+            1 & x \\
+            0 & 0
+        \end{pmatrix},\ \forall x\in \RR
+    \]
+    whence it is not a group.
+\end{solution}
+\end{document}
